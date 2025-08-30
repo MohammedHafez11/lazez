@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمصات لذيذ - خلي حياتك لذيذة</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #F4A460 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Coffee beans floating animation */
+        .coffee-bean {
+            position: absolute;
+            width: 10px;
+            height: 15px;
+            background: #3E2723;
+            border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .coffee-bean:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .coffee-bean:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
+        .coffee-bean:nth-child(3) { top: 50%; left: 5%; animation-delay: 4s; }
+        .coffee-bean:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 1s; }
+        .coffee-bean:nth-child(5) { bottom: 30%; left: 20%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        .logo img {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            50%, 100% { transform: translateX(100%); }
+        }
+
+        .tagline {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #FFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #F5DEB3;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 2s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Social Links Container */
+        .social-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.05) 50%, transparent 60%);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 20px 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-size: 24px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover .social-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .social-text {
+            flex: 1;
+        }
+
+        .social-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .social-handle {
+            font-size: 0.9rem;
+            color: #666;
+            direction: ltr;
+            text-align: right;
+        }
+
+        /* Individual social media colors */
+        .facebook .social-icon { background: linear-gradient(135deg, #1877F2, #42A5F5); }
+        .instagram .social-icon { background: linear-gradient(135deg, #E4405F, #FCCC63, #833AB4); }
+        .snapchat .social-icon { background: linear-gradient(135deg, #FFFC00, #FFF700); color: #333; }
+        .tiktok .social-icon { background: linear-gradient(135deg, #000, #FF0050); }
+        .youtube .social-icon { background: linear-gradient(135deg, #FF0000, #CC0000); }
+        .whatsapp .social-icon { background: linear-gradient(135deg, #25D366, #128C7E); }
+        .website .social-icon { background: linear-gradient(135deg, #8B4513, #D2691E); }
+        .email .social-icon { background: linear-gradient(135deg, #34495E, #2C3E50); }
+
+        /* Hover effects for each platform */
+        .facebook:hover { border-color: #1877F2; }
+        .instagram:hover { border-color: #E4405F; }
+        .snapchat:hover { border-color: #FFFC00; }
+        .tiktok:hover { border-color: #FF0050; }
+        .youtube:hover { border-color: #FF0000; }
+        .whatsapp:hover { border-color: #25D366; }
+        .website:hover { border-color: #8B4513; }
+        .email:hover { border-color: #34495E; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #FFF;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .logo {
+                width: 200px;
+                height: 200px;
+            }
+
+            .logo img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .tagline {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-link {
+                padding: 15px 20px;
+            }
+
+            .social-name {
+                font-size: 1rem;
+            }
+        }
+
+        /* Additional animations */
+        .social-link {
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .social-link:nth-child(1) { animation-delay: 0.1s; }
+        .social-link:nth-child(2) { animation-delay: 0.2s; }
+        .social-link:nth-child(3) { animation-delay: 0.3s; }
+        .social-link:nth-child(4) { animation-delay: 0.4s; }
+        .social-link:nth-child(5) { animation-delay: 0.5s; }
+        .social-link:nth-child(6) { animation-delay: 0.6s; }
+        .social-link:nth-child(7) { animation-delay: 0.7s; }
+        .social-link:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating coffee beans -->
+    <div class="coffee-bean"></div>
+    <div class="coffee-bean"></div>
+    <div class="coffee-bean"></div>
+    <div class="coffee-bean"></div>
+    <div class="coffee-bean"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <img src="./logo.jpeg" alt="محمصات لذيذ">
+            </div>
+            <h1 class="tagline">محمصات لذيذ - خلي حياتك لذيذة</h1>
+        </header>
+
+        <div class="social-container">
+            <div class="social-grid">
+                <a href="https://www.facebook.com/share/1AnBvxeuvA/?mibextid=wwXIfr" target="_blank" class="social-link facebook">
+                    <div class="social-text">
+                        <div class="social-name">فيسبوك</div>
+                        <div class="social-handle">تابعنا على Facebook</div>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/lazez_roasters?igsh=a2NsMGI0bWZ2ZDhj&utm_source=qr" target="_blank" class="social-link instagram">
+                    <div class="social-text">
+                        <div class="social-name">إنستغرام</div>
+                        <div class="social-handle">@lazez_roasters</div>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                </a>
+
+                <a href="https://t.snapchat.com/2OIn41N4" target="_blank" class="social-link snapchat">
+                    <div class="social-text">
+                        <div class="social-name">سناب شات</div>
+                        <div class="social-handle">تابع قصصنا اليومية</div>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-snapchat-ghost"></i>
+                    </div>
+                </a>
+
+                <a href="https://www.tiktok.com/@lazez_roasters?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link tiktok">
+                    <div class="social-text">
+                        <div class="social-name">تيك توك</div>
+                        <div class="social-handle">@lazez_roasters</div>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                </a>
+
+                <a href="https://youtube.com/@lazez_roasters?si=CNjvHHX05WhurREX" target="_blank" class="social-link youtube">
+                    <div class="social-text">
+                        <div class="social-name">يوتيوب</div>
+                        <div class="social-handle">@lazez_roasters</div>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/966542777832" target="_blank" class="social-link whatsapp">
+                    <div class="social-text">
+                        <div class="social-name">واتساب</div>
+                        <div class="social-handle">+966 54 277 7832</div>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                </a>
+
+                <a href="https://lazezroasters.com" target="_blank" class="social-link website">
+                    <div class="social-text">
+                        <div class="social-name">المتجر الإلكتروني</div>
+                        <div class="social-handle">lazezroasters.com</div>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </a>
+
+                <a href="mailto:info@lazezroasters.com" class="social-link email">
+                    <div class="social-text">
+                        <div class="social-name">البريد الإلكتروني</div>
+                        <div class="social-handle">info@lazezroasters.com</div>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 محمصات لذيذ - جميع الحقوق محفوظة</p>
+            <p>صُنع بحب  في المملكة العربية السعودية</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate social links on hover
+            const socialLinks = document.querySelectorAll('.social-link');
+            
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click effect
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    const rect = this.getBoundingClientRect();
+                    const size = 60;
+                    const x = e.clientX - rect.left - size/2;
+                    const y = e.clientY - rect.top - size/2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: rgba(255,255,255,0.6);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        left: ${x}px;
+                        top: ${y}px;
+                        animation: ripple 0.6s ease-out;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Add CSS for ripple animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    0% {
+                        transform: scale(0);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Parallax effect for coffee beans
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const beans = document.querySelectorAll('.coffee-bean');
+                
+                beans.forEach((bean, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    bean.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
